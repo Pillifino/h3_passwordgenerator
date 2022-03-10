@@ -24,46 +24,64 @@ var buildPassword = {
 	symbols: ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '+', '-', '.', '~', '|', '<', '>', '=', '-', '_', '/', ':', ';', '?', '[', ']', '{', '}', '~']
 }
 
-// Get User preferences
+// Choose Character Types To Be Added Into
 var chosenLength = prompt("Password Length?")
 var isUpper = confirm("Uppercases?")
 var isLower = confirm("Lowercases?")
 var isNumbers = confirm("Numbers?")
 var isSymbols = confirm("symbols?")
-var potentialCharacters = [] //use this variable to concatonate the chosen character types
-
+var passwordarray = [] //use this variable to concatonate the chosen character types
+var potentialCharacters = []
+// Set rules on password length
+	while (chosenLength < 8 || chosenLength >128){
+		chosenLength = prompt("Must be between 8 and 128 characters")
+	}
 // Choose Random index for each character type
 	if (isUpper === true){
 	for (var i = 0; i < 1; i++) {
 		console.log(
-			potentialCharacters = buildPassword.upperLetters[Math.floor(Math.random() * buildPassword.upperLetters.length)]
-			); 
+			passwordarray.push(buildPassword.upperLetters[Math.floor(Math.random() * buildPassword.upperLetters.length)])
+			);
+		// potentialCharacters = potentialCharacters.concat(buildPassword.upperLetters)
 	}
 }
 	if (isLower === true){
 	for (var i = 0; i < 1; i++) {
 		console.log(
-			potentialCharacters  = buildPassword.lowerLetters[Math.floor(Math.random() * buildPassword.lowerLetters.length)]
+			passwordarray.push(buildPassword.lowerLetters[Math.floor(Math.random() * buildPassword.lowerLetters.length)])
 			); 
+		console.log(passwordarray)
+		// potentialCharacters = potentialCharacters.concat(buildPassword.lowerLetters)
 	}
 }
 	if (isNumbers === true){
 	for (var i = 0; i < 1; i++) {
 		console.log(
-			potentialCharacters  = buildPassword.numbers[Math.floor(Math.random() * buildPassword.numbers.length)]
-			); 
+			passwordarray.push(buildPassword.numbers[Math.floor(Math.random() * buildPassword.numbers.length)])
+			);
+			// potentialCharacters = potentialCharacters.concat(buildPassword.numbers)
 	}
 }
 	if (isSymbols === true){
 	for (var i = 0; i < 1; i++) {
 		console.log(
-			potentialCharacters  = buildPassword.symbols[Math.floor(Math.random() * buildPassword.symbols.length)]
-			); 
+			passwordarray.push(buildPassword.symbols[Math.floor(Math.random() * buildPassword.symbols.length)])
+			);
+			console.log(passwordarray)
+			console.log(potentialCharacters = potentialCharacters.concat(buildPassword.symbols))
+			// potentialCharacters = potentialCharacters.concat(buildPassword.symbols)
 	}
+	// subract chosen character array length from length chose by user
+	var trueLength = chosenLength - passwordarray.length
+	for (var i = 0; i < trueLength; i++){
+		var randomIndex = Math.floor(Math.random() * potentialCharacters.length)
+		passwordarray.push(potentialCharacters[randomIndex])
+	}
+	var finalPassword = passwordarray.join('');
+	return finalPassword
 }
 
 
-	
 	// your code here
 	// 1. get user preferences
 		// ask for length between 8 & 128 
