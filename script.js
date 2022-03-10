@@ -30,7 +30,7 @@ var isUpper = confirm("Uppercases?")
 var isLower = confirm("Lowercases?")
 var isNumbers = confirm("Numbers?")
 var isSymbols = confirm("symbols?")
-var passwordarray = [] //use this variable to concatonate the chosen character types
+var passwordarray = [] //use this variable to push the chosen character types into one variable
 var potentialCharacters = []
 // Set rules on password length
 	while (chosenLength < 8 || chosenLength >128){
@@ -42,7 +42,6 @@ var potentialCharacters = []
 		console.log(
 			passwordarray.push(buildPassword.upperLetters[Math.floor(Math.random() * buildPassword.upperLetters.length)])
 			);
-		// potentialCharacters = potentialCharacters.concat(buildPassword.upperLetters)
 	}
 }
 	if (isLower === true){
@@ -51,7 +50,6 @@ var potentialCharacters = []
 			passwordarray.push(buildPassword.lowerLetters[Math.floor(Math.random() * buildPassword.lowerLetters.length)])
 			); 
 		console.log(passwordarray)
-		// potentialCharacters = potentialCharacters.concat(buildPassword.lowerLetters)
 	}
 }
 	if (isNumbers === true){
@@ -59,7 +57,7 @@ var potentialCharacters = []
 		console.log(
 			passwordarray.push(buildPassword.numbers[Math.floor(Math.random() * buildPassword.numbers.length)])
 			);
-			// potentialCharacters = potentialCharacters.concat(buildPassword.numbers)
+			console.log(passwordarray)
 	}
 }
 	if (isSymbols === true){
@@ -69,8 +67,7 @@ var potentialCharacters = []
 			);
 			console.log(passwordarray)
 			console.log(potentialCharacters = potentialCharacters.concat(buildPassword.symbols))
-			// potentialCharacters = potentialCharacters.concat(buildPassword.symbols)
-	}
+	}  
 	// subract chosen character array length from length chose by user
 	var trueLength = chosenLength - passwordarray.length
 	for (var i = 0; i < trueLength; i++){
@@ -80,26 +77,4 @@ var potentialCharacters = []
 	var finalPassword = passwordarray.join('');
 	return finalPassword
 }
-
-
-	// your code here
-	// 1. get user preferences
-		// ask for length between 8 & 128 
-			// Expression 1: x > 8 
-			//Expression 2: x <128
-			//create conditional statement with && operator
-			//if true...
-		// ask for character types 
-			//lowercase,uppercase,numeric, and/or special characters (Create variables)
-			//if at least one requirement has been confirmed (boolean)
-	// 2. identify and collect the buckets the user has chosen (legnth, character types)
-	// 3. create a guaranteed collection
-	// 4. create a password variable, an array
-	// 5. randomly draw a character
-		//Math.floor and math.random
-	// 6. put that character on the password variable (?)
-	// 7. repeat as many times specified (for loop)
-	// 8. loop through the guaranteed elements, replace elements in password array
-	// 9. join characters in the password array into a string
-	// 10. return the password string
 }
